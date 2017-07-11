@@ -36,6 +36,7 @@ public class Driver extends Application {
                 farm.add(new FarmTile().getImageView(), x, y);
             }
         }
+
         pane.getChildren().add(farm);
 
 
