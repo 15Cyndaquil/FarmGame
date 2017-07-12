@@ -1,14 +1,13 @@
 package TileSets.Farm;
 
-import Exceptions.TypeNotValidException;
 import TileSets.Tile;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import java.io.File;
 
 /**
  * Created by Cyndaquil on 7/10/2017.
+ * Main object for FarmArea
  */
 public class FarmTile extends Tile {
     private  File[] imageFiles = new File[5];
@@ -25,27 +24,27 @@ public class FarmTile extends Tile {
         imageView.setImage(images[0]);
         setActions();
     }
-    public FarmTile(int type){
-        super();
-        if(type<0||type> imageFiles.length-1){
-            this.type = type;
-            setImageFiles();
-            setImages();
-
-            imageView.setImage(new Image(imageFiles[type].toURI().toString()));
-            setActions();
-        }else {
-            System.out.println("Type not found defaulting to 0");
-
-            type = 0;
-            setImageFiles();
-            setImages();
-
-
-            imageView.setImage(images[0]);
-            setActions();
-        }
-    }
+//    public FarmTile(int type){
+//        super();
+//        if(type<0||type> imageFiles.length-1){
+//            this.type = type;
+//            setImageFiles();
+//            setImages();
+//
+//            imageView.setImage(new Image(imageFiles[type].toURI().toString()));
+//            setActions();
+//        }else {
+//            System.out.println("Type not found defaulting to 0");
+//
+//            type = 0;
+//            setImageFiles();
+//            setImages();
+//
+//
+//            imageView.setImage(images[0]);
+//            setActions();
+//        }
+//    }
 
     private void setImageFiles(){
         imageFiles[0] = new File(dir, "FarmMain.png");
@@ -65,6 +64,12 @@ public class FarmTile extends Tile {
                 case "Till":
                     setImage(3);
                     break;
+                case "Water":
+                    if(type==1){
+                        setImage(2);
+                    }else if(type==3){
+                        setImage(4);
+                    }
             }
 //            switch (type){
 //                case 0:
@@ -87,7 +92,7 @@ public class FarmTile extends Tile {
         });
     }
 
-    public void setImage(int type){
+    private void setImage(int type){
         imageView.setImage(images[type]);
         this.type = type;
     }

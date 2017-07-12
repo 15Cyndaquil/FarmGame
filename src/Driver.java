@@ -1,35 +1,27 @@
 import TileSets.Farm.FarmTile;
 import javafx.application.Application;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import net.java.games.input.Component;
-import net.java.games.input.Controller;
-import net.java.games.input.ControllerEnvironment;
 
 import java.io.File;
-import java.util.EventListener;
 
 
 /**
  * Created by Cyndaquil on 7/10/2017.
+ * Driver Class for my basic farm game
  */
 public class Driver extends Application {
-
-
-    Scene scene;
-    SimpleBooleanProperty buttonPropert;
-    File dir = new File("src/TileSets/Player");
-    File playerFile = new File(dir, "PlayerTest.png");
-    ImageView playerImage = new ImageView(playerFile.toURI().toString());
+    private File dir = new File("src/TileSets/Player");
+    private File playerFile = new File(dir, "PlayerTest.png");
+    private ImageView playerImage = new ImageView(playerFile.toURI().toString());
     @Override
     public void start(Stage primaryStage) throws Exception {
         Pane pane = new Pane();
         pane.setManaged(false);
-        scene = new Scene(pane, 1280, 720);
+        Scene scene = new Scene(pane, 1280, 720);
 
 
         GridPane farm = new GridPane();
@@ -82,9 +74,7 @@ public class Driver extends Application {
 
     }
 
-    public Scene getScene(){return scene;}
-
-    public void setAction(GridPane farm){
+    private void setAction(GridPane farm){
         double playerX = playerImage.getLayoutX();
         double playerY = playerImage.getLayoutY();
         playerX = ((int) (playerX/16))*16d;
