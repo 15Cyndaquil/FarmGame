@@ -16,5 +16,6 @@ public class Tile {
     }
 
     public ImageView getImageView() {return imageView;}
-
+    public double getX(){return imageView.getX();}
+    public double getY(){return imageView.getY();}
 }

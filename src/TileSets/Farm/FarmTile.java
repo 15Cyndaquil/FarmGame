@@ -60,30 +60,35 @@ public class FarmTile extends Tile {
         }
     }
     private void setActions(){
-        imageView.setOnMouseClicked(e->{
-            switch (type){
-                case 0:
-                    imageView.setImage(images[3]);
-                    type = 3;
-                    break;
-                case 1:
-                    imageView.setImage(images[2]);
-                    type = 2;
-                    break;
-                case 3:
-                    if((int)(Math.random()*2)==0){
-                        imageView.setImage(images[1]);
-                        type = 1;
-                    }else {
-                        imageView.setImage(images[4]);
-                        type = 4;
-                    }
-                    break;
-                case 4:
-                    imageView.setImage(images[2]);
-                    type = 2;
+        imageView.idProperty().addListener(e->{
+            switch (imageView.idProperty().get()){
+                case "Till":
+                    setImage(3);
                     break;
             }
+//            switch (type){
+//                case 0:
+//                    setImage(3);
+//                    break;
+//                case 1:
+//                    setImage(2);
+//                    break;
+//                case 3:
+//                    if((int)(Math.random()*2)==0){
+//                       setImage(1);
+//                    }else {
+//                        setImage(4);
+//                    }
+//                    break;
+//                case 4:
+//                    setImage(2);
+//                    break;
+//            }
         });
+    }
+
+    public void setImage(int type){
+        imageView.setImage(images[type]);
+        this.type = type;
     }
 }
